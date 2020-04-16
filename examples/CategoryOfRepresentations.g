@@ -5,9 +5,7 @@ LoadPackage( "CatReps" );
 #! @Example
 qc3c3 := RightQuiver( "q(2)[a:1->1,b:1->2,c:2->2]" );
 #! q(2)[a:1->1,b:1->2,c:2->2]
-HOMALG_MATRICES.PreferDenseMatrices := true;
-#! true
-GF3 := HomalgRingOfIntegers( 3 );
+GF3 := HomalgRingOfIntegersInExternalGAP( 3 );
 #! GF(3)
 GF3q := PathAlgebra( GF3, qc3c3 );
 #! GF(3) * q
@@ -262,6 +260,9 @@ Display( fortyone );
 #!  . . . . . . . . . . . . . . . 1
 #! 
 #! A morphism in Category of matrices over GF(3)
+HOMALG_MATRICES.Eager := true;
+homalgIOMode( "D" );
+quit;
 etas := WeakDirectSumDecomposition( fortyone );;
 dec := List( etas, eta -> List( SetOfObjects( kq ),
              o -> Dimension( Source( UnderlyingCapTwoCategoryCell( eta )( o ) ) ) ) );
